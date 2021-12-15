@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/usr/share/nvim/runtime'
+let g:netrw_dirhist_0='/home/wildug/Scripting/python'
+let g:netrw_dirhist_9='/home/wildug/.ipython/profile_default'
+let g:netrw_dirhist_8='/home/wildug/.ipython/profile_default/startup'
+let g:netrw_dirhist_7='/home/wildug/.ipython/profile_default'
+let g:netrw_dirhist_6='/home/wildug/.ipython/profile_default/security'
+let g:netrw_dirhist_5='/home/wildug/.ipython/profile_default'
+let g:netrw_dirhist_4='/home/wildug/.ipython/profile_default/pid'
+let g:netrw_dirhist_3='/home/wildug/.ipython/profile_default'
+let g:netrw_dirhist_2='/home/wildug/.ipython/profile_default/db'
