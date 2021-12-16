@@ -43,7 +43,7 @@ require'nvim-tree'.setup {
     side = 'left',
     auto_resize = true,
     mappings = {
-      custom_only = true,
+      custom_only = false,
       list = {}
     }
   }

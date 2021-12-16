@@ -4,7 +4,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Themes
 Plug 'projekt0n/github-nvim-theme'
-Plug 'joshdick/onedark.vim'
 
 
 " Tree and icons
@@ -33,6 +32,9 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " latex
 Plug 'lervag/vimtex'
 
+" debug
+Plug 'puremourning/vimspector'
+
 call plug#end()
 
 set nocompatible
@@ -53,6 +55,12 @@ nnoremap <C-i> <C-]>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+inoremap ' ''<Left>
+inoremap " ""<Left>
+
 set scrolloff=8
 set sidescrolloff=8
 cabbrev h vert rightb h
@@ -60,7 +68,7 @@ let mapleader = "ö"
 nmap <leader>C  :edit $MYVIMRC<cr>
 nmap <leader>R  :source $MYVIMRC<cr>
 
-" firenvim
+" firenvim for overleaf
 if exists('g:started_by_firenvim')
     nnoremap <C-CR> <Esc>:w<CR>:call firenvim#eval_js('document.querySelector(".btn-recompile").click()')<CR>
     au TextChanged * ++nested write
@@ -115,6 +123,7 @@ colorscheme github_*
 "colorscheme onedark 
 "
 
+" telescope mappings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
