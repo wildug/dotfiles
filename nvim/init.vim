@@ -60,6 +60,7 @@ inoremap [ []<Left>
 inoremap { {}<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
+autocmd FileType html inoremap  < <><Left>
 
 set scrolloff=8
 set sidescrolloff=8
@@ -68,6 +69,19 @@ let mapleader = "ö"
 nmap <leader>C  :edit $MYVIMRC<cr>
 nmap <leader>R  :source $MYVIMRC<cr>
 
+let g:firenvim_config = {
+    \ 'globalSettings': {
+        \ 'ignoreKeys': {
+        \ 'normal': ['<C-1>', '<C-2>', '<C-3>', '<C-4>', '<C-5>', '<C-6>', '<C-7>', '<C-8>', '<C-9>']
+            \}
+        \},
+        \ 'localSettings':{
+        \ '.*': {
+            \ 'takeover': 'never'
+        \ }
+        \ }
+    \ }
+    
 " firenvim for overleaf
 if exists('g:started_by_firenvim')
     nnoremap <C-CR> <Esc>:w<CR>:call firenvim#eval_js('document.querySelector(".btn-recompile").click()')<CR>
@@ -75,13 +89,6 @@ if exists('g:started_by_firenvim')
     au TextChangedI * ++nested write
 endif
 
-let g:firenvim_config = {
-    \ 'globalSettings': {
-        \ 'ignoreKeys': {
-        \ 'normal': ['<C-1>', '<C-2>', '<C-3>', '<C-4>', '<C-5>', '<C-6>', '<C-7>', '<C-8>', '<C-9>']
-        \ }
-    \ }
-\ }
 
 
 autocmd FileType python map <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m title:fish \\x1b ipython3 ' shellescape(@%, 1) '\\x1b \\x0d'<CR>
