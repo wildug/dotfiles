@@ -13,8 +13,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" linting
-Plug 'dense-analysis/ale'
 
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 
@@ -25,14 +23,14 @@ Plug 'knubie/vim-kitty-navigator'
 " firenvim
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
-
 " latex
 Plug 'lervag/vimtex'
-
 
 " debug
 Plug 'puremourning/vimspector'
 
+" autopairs
+Plug 'windwp/nvim-autopairs'
 call plug#end()
 
 set nocompatible
@@ -42,6 +40,9 @@ set number
 set smartcase
 set clipboard+=unnamedplus
 
+" might delete
+set hidden
+
 set autoindent
 set smartindent
 
@@ -49,16 +50,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-nnoremap Y y$
+source $HOME/.config/nvim/general/keybindings.lua
+
 nnoremap <C-i> <C-]>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
+set cursorline
+set cursorlineopt=number
 autocmd FileType html inoremap  < <><Left>
 
 set scrolloff=8
@@ -104,10 +102,16 @@ let g:firenvim_config = {
     \ }
     
 " firenvim for overleaf
+
+
 if exists('g:started_by_firenvim')
     nnoremap <C-CR> <Esc>:w<CR>:call firenvim#eval_js('document.querySelector(".btn-recompile").click()')<CR>
-
-    let g:vimtex_compiler_enabled = 0
+    inoremap <C-CR> <Esc>:w<CR>:call firenvim#eval_js('document.querySelector(".btn-recompile").click()')<CR>
+    vnoremap <C-CR> <Esc>:w<CR>:call firenvim#eval_js('document.querySelector(".btn-recompile").click()')<CR>
+    let g:vimtex_view_enabled = 0
+    set guifont=FiraCode_Font_Mono:h10
+    set columns=101
+    set lines=45
 endif
 
 
@@ -126,19 +130,12 @@ autocmd FileType r imap <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m
 " autocmd FileType r imap <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m title:R \\x1b isource(\"' shellescape(@%, 1) '\")'<CR>
 
 
-" Start NERDTree. If a file is specified, move the cursor to its window.
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-"
-"" Open the existing NERDTree on each new tab.
-"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
-"vim tex
-
-" autosave
 
 " coc settings
 source $HOME/.config/nvim/general/cocset.vim
+
+" autopairs
+source $HOME/.config/nvim/general/autopairs.lua
 
 " tree
 source $HOME/.config/nvim/general/tree.lua

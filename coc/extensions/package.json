@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "coc-clangd": ">=0.17.0",
+    "coc-emmet": ">=1.1.6",
+    "coc-fish": ">=1.0.11",
+    "coc-html": ">=1.5.1",
+    "coc-json": ">=1.4.0",
+    "coc-pyright": ">=1.1.194",
+    "coc-r-lsp": ">=1.2.1",
+    "coc-sh": ">=0.6.0",
+    "coc-snippets": ">=2.4.7",
+    "coc-tsserver": ">=1.9.4",
+    "coc-vimtex": ">=1.1.0"
+  }
+}
