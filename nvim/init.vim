@@ -1,7 +1,16 @@
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')   
 " no coc anymore?
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For luasnip users.
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Themes
 Plug 'projekt0n/github-nvim-theme'
@@ -114,7 +123,13 @@ autocmd FileType r imap <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m
 
 
 
-source $HOME/.config/nvim/general/lspsettings.lua
+"set updatetime=2000
+"set completeopt-=preview
+" basic lsp settings without cmp
+"source $HOME/.config/nvim/general/lspsettings.lua
+"
+" with cmp
+source $HOME/.config/nvim/general/cmpsettings.lua
 " autopairs
 source $HOME/.config/nvim/general/autopairs.lua
 
