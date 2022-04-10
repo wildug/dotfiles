@@ -6,6 +6,10 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 
+-- nnoremap <C-i> <C-]>
+keymap("n", "<C-i>", "<C-]>", opts)
+keymap("v", "<S-Tab>", "<gv", opts)
+keymap("v", "<Tab>",   ">gv", opts)
 
 -- Normal --
 -- Better window navigation

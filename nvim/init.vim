@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
-" conquer of completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" no coc anymore?
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 
 " Themes
 Plug 'projekt0n/github-nvim-theme'
@@ -52,12 +53,8 @@ set expandtab
 
 source $HOME/.config/nvim/general/keybindings.lua
 
-nnoremap <C-i> <C-]>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
 set cursorline
 set cursorlineopt=number
-autocmd FileType html inoremap  < <><Left>
 
 set scrolloff=8
 set sidescrolloff=8
@@ -65,20 +62,6 @@ cabbrev h vert rightb h
 let mapleader = "ö"
 nmap <leader>C  :edit $MYVIMRC<cr>
 nmap <leader>R  :source $MYVIMRC<cr>
-
-" snippets
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
 
 
 " tex settings
@@ -131,9 +114,7 @@ autocmd FileType r imap <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m
 
 
 
-" coc settings
-source $HOME/.config/nvim/general/cocset.vim
-
+source $HOME/.config/nvim/general/lspsettings.lua
 " autopairs
 source $HOME/.config/nvim/general/autopairs.lua
 
