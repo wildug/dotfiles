@@ -23,6 +23,7 @@ Plug 'projekt0n/github-nvim-theme'
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " kitty
 Plug 'fladson/vim-kitty'
@@ -45,21 +46,13 @@ Plug 'windwp/nvim-autopairs'
 
 " nnn
 Plug 'luukvbaal/nnn.nvim'
+"
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 nnoremap <C-n> <cmd>NnnExplorer<CR>
 tnoremap <C-n> <cmd>NnnExplorer %:p:h<CR>
-lua << EOF
-require("nnn").setup({
-    replace_netrw = "picker",
-    windownav = {        -- window movement mappings to navigate out of nnn
-            left = "<C-h>",
-            right = "<C-l>",
-            next = "<C-w>",
-            prev = "<C-W>",
-        },
-})
-EOF
 
 
 set nocompatible
@@ -158,6 +151,14 @@ source $HOME/.config/nvim/general/autopairs.lua
 "source $HOME/.config/nvim/general/firsttree.vim
 source $HOME/.config/nvim/general/runkitty.lua
 
+" nnn
+source $HOME/.config/nvim/general/nnn.lua
+
+" indentline
+source $HOME/.config/nvim/general/indentline.lua
+
+" treesitter
+source $HOME/.config/nvim/general/treesitter.lua
 " colorscheme TODO
 "source $HOME/.config/nvim/general/colorscheme.lua
 colorscheme github_*
