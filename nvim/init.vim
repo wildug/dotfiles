@@ -16,19 +16,20 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'projekt0n/github-nvim-theme'
 
 " lua Tree and icons
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'kyazdani42/nvim-web-devicons' " for file icons
+"Plug 'kyazdani42/nvim-tree.lua'
 
 " telescope
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 
-
-Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 
 " kitty
 Plug 'fladson/vim-kitty'
-Plug 'knubie/vim-kitty-navigator'
+
+
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
+Plug 'jghauser/kitty-runner.nvim'
 
 " firenvim
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -41,9 +42,28 @@ Plug 'puremourning/vimspector'
 
 " autopairs
 Plug 'windwp/nvim-autopairs'
+
+" nnn
+Plug 'luukvbaal/nnn.nvim'
 call plug#end()
 
+nnoremap <C-n> <cmd>NnnExplorer<CR>
+tnoremap <C-n> <cmd>NnnExplorer %:p:h<CR>
+lua << EOF
+require("nnn").setup({
+    replace_netrw = "picker",
+    windownav = {        -- window movement mappings to navigate out of nnn
+            left = "<C-h>",
+            right = "<C-l>",
+            next = "<C-w>",
+            prev = "<C-W>",
+        },
+})
+EOF
+
+
 set nocompatible
+set spell
 set spelllang=en
 set relativenumber
 set number
@@ -74,7 +94,7 @@ nmap <leader>R  :source $MYVIMRC<cr>
 
 
 " tex settings
-let g:vimtex_view_method='zathura'
+let g:Tex_DefaultTargetFormat='pdf'
 let g:tex_flavor='latex'
 set conceallevel=1
 let g:tex_conceal='abdmg'
@@ -134,8 +154,9 @@ source $HOME/.config/nvim/general/cmpsettings.lua
 source $HOME/.config/nvim/general/autopairs.lua
 
 " tree
-source $HOME/.config/nvim/general/tree.lua
-source $HOME/.config/nvim/general/firsttree.vim
+"source $HOME/.config/nvim/general/tree.lua
+"source $HOME/.config/nvim/general/firsttree.vim
+source $HOME/.config/nvim/general/runkitty.lua
 
 " colorscheme TODO
 "source $HOME/.config/nvim/general/colorscheme.lua
