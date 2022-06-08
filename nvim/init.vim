@@ -51,8 +51,8 @@ Plug 'luukvbaal/nnn.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
-nnoremap <C-n> <cmd>NnnExplorer<CR>
-tnoremap <C-n> <cmd>NnnExplorer %:p:h<CR>
+nnoremap <C-n> <cmd>NnnExplorer %:p:h<CR>
+tnoremap <C-n> <cmd>NnnExplorer<CR>
 
 
 set nocompatible
@@ -157,6 +157,8 @@ source $HOME/.config/nvim/general/nnn.lua
 " indentline
 source $HOME/.config/nvim/general/indentline.lua
 
+highlight IndentBlanklineContextChar guifg=#00FF00 gui=nocombine
+highlight IndentBlanklineContextStart guisp=#00FF00 gui=underline
 " treesitter
 source $HOME/.config/nvim/general/treesitter.lua
 " colorscheme TODO
