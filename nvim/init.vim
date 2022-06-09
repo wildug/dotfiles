@@ -30,7 +30,7 @@ Plug 'fladson/vim-kitty'
 
 
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
-Plug 'jghauser/kitty-runner.nvim'
+Plug 'wildug/kitty-runner.nvim'
 
 " firenvim
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
