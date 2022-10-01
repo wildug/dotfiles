@@ -43,6 +43,6 @@ preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 # custom aliases
 alias r="radian"
 alias vim="nvim"
-
+bindkey "^R" history-incremental-pattern-search-backward
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

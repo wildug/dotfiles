@@ -57,38 +57,45 @@ cmp.setup.cmdline(':', {
     })
 })
 
-local enhance_server_opts = {
-    ["sumneko_lua"] = function(options)
-        options.settings = {
-            Lua = {
-                diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                    globals = {'vim'},
-                },
-                workspace = {
-                -- Make the server aware of Neovim runtime files
-                    library = {
-                      [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                      [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                    },
-                },
-            }
-        }
-    end,
-}
+--local enhance_server_opts = {
+--    ["sumneko_lua"] = function(options)
+--        options.settings = {
+--            Lua = {
+--                diagnostics = {
+--                -- Get the language server to recognize the `vim` global
+--                    globals = {'vim'},
+--                },
+--                workspace = {
+--                -- Make the server aware of Neovim runtime files
+--                    library = {
+--                      [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+--                      [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+--                    },
+--                },
+--            }
+--        }
+--    end,
+--    ["pyright"] = function(options)
+--        options.settings = {
+--            pyright = {
+--                venvPath = "~"
+--            }
+--        }
+--    end,
+--}
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
-    local options = {
-        capabilites = capabilities,
+local lsp_installer = require("nvim-lsp-installer").setup({
+    automatic_installation = true,
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
     }
-    if enhance_server_opts[server.name] then
-    -- Enhance the default opts with the server-specific ones
-        enhance_server_opts[server.name](options)
-    end
-    server:setup(options)
-end)
+})
+
+

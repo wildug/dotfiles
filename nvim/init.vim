@@ -1,7 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')   
+"
 " no coc anymore?
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -39,7 +41,16 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'lervag/vimtex'
 
 " debug
-Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+
+
+
+
+" new lsp installer 
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
 
 " autopairs
 Plug 'windwp/nvim-autopairs'
@@ -50,6 +61,8 @@ Plug 'luukvbaal/nnn.nvim'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
+
+
 
 nnoremap <C-n> <cmd>NnnExplorer %:p:h<CR>
 tnoremap <C-n> <cmd>NnnExplorer<CR>
@@ -140,7 +153,10 @@ autocmd FileType r imap <buffer> <F9> :w<CR> :silent exec '!kitty @ send-text -m
 "set completeopt-=preview
 " basic lsp settings without cmp
 "source $HOME/.config/nvim/general/lspsettings.lua
-"
+source $HOME/.config/nvim/general/masonsettings.lua
+
+" dap
+source $HOME/.config/nvim/general/dapsettings.lua
 " with cmp
 source $HOME/.config/nvim/general/cmpsettings.lua
 " autopairs
@@ -159,6 +175,7 @@ source $HOME/.config/nvim/general/indentline.lua
 
 highlight IndentBlanklineContextChar guifg=#00FF00 gui=nocombine
 highlight IndentBlanklineContextStart guisp=#00FF00 gui=underline
+
 " treesitter
 source $HOME/.config/nvim/general/treesitter.lua
 " colorscheme TODO
