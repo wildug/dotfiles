@@ -1,3 +1,8 @@
+if exists('g:vscode')
+
+    set clipboard+=unnamedplus
+    " VSCode extension
+else
 call plug#begin('~/.config/nvim/plugged')   
 "
 " no coc anymore?
@@ -180,8 +185,7 @@ highlight IndentBlanklineContextStart guisp=#00FF00 gui=underline
 source $HOME/.config/nvim/general/treesitter.lua
 " colorscheme TODO
 "source $HOME/.config/nvim/general/colorscheme.lua
-colorscheme github_*
-"colorscheme onedark 
+
 
 
 " telescope mappings
@@ -189,3 +193,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+    " ordinary Neovim
+    " colorscheme onedark 
+    colorscheme github_*
+endif
