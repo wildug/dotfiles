@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export PATH=/home/wildug/Desktop/MRIcroGL:$PATH
+export PATH=/home/wildug/Bachelorarbeit/SZ3/bin:$PATH
+
+
 # Use powerline
 USE_POWERLINE="true"
 # Source manjaro-zsh-configuration
@@ -43,6 +47,8 @@ preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 # custom aliases
 alias r="radian"
 alias vim="nvim"
+alias ll='ls -l --color=auto'
+
 bindkey "^R" history-incremental-pattern-search-backward
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

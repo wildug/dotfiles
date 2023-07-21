@@ -1,5 +1,6 @@
 if exists('g:vscode')
 
+    source $HOME/.config/nvim/general/keybindings.lua
     set clipboard+=unnamedplus
     " VSCode extension
 else
