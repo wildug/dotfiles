@@ -69,3 +69,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="$PATH:/home/wildug/Downloads/flutter/bin:$PATH"
+
+export NVCC_FLAGS="-arch=sm_61"
+export LD_LIBRARY_PATH=/home/wildug/Downloads/nvcomp/lib:$LD_LIBRARY_PATH
+alias ssh="TERM=xterm ssh"
+export PATH=/opt/cuda/extras/compute-sanitizer/:$PATH
+
